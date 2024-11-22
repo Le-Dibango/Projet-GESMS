@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+            <!-- Sidebar Area End Here -->
+            <div class="dashboard-content-one">
+                <!-- Breadcubs Area Start Here -->
+                <div class="breadcrumbs-area">
+                    <h3>Students</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>Student Details</li>
+                    </ul>
+                </div>
+                <!-- Breadcubs Area End Here -->
+                <!-- Student Details Area Start Here -->
+                <div class="card height-auto">
+                    <div class="card-body">
+                        <div class="heading-layout1">
+                            <div class="item-title">
+                                <h3>Photo de l'élève</h3>
+                            </div>
+                           <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" 
+                                data-toggle="dropdown" aria-expanded="false">...</a>
+        
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single-info-details">
+                            <div class="item-img">
+                                {% if eleve.photo %}
+                                    <img src="{{ eleve.photo.url }}" alt="Photo de l'élève" width="150" height="150">
+                                {% else %}
+                                    <p>Pas de photo disponible</p>
+                                {% endif %}
+                            </div>
+                            <div class="item-content">
+                                <div class="header-inline item-header">
+                                    <h3 class="text-dark-medium font-medium">{{ eleve.nom }} {{ eleve.prenom }}</h3>
+                                    <div class="header-elements">
+                                        <ul>
+                                            <li><a href="#"><i class="far fa-edit"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-print"></i></a></li>
+                                            <li><a href="#"><i class="fas fa-download"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>Inscription réussie, vous êtes désormais admis au niveau {{ eleve.niveau }}, en classe de {{ eleve.classe }}.</p>
+                        
+                                <div class="info-table table-responsive">
+                                    <table class="table text-nowrap">
+                                        <tbody>
+                                            <tr>
+                                                <td>Nom:</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.nom }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Prénom(s):</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.prenom }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Date de naissance:</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.date_de_naissance }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nationalité :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.nationalite }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Genre :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.genre }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Niveau :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.niveau }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Classe :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.classe }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Contact :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.contact }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nom & Prénom(s) du parent:</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.nom_prenom_parent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Profession du parent :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.profession_parent }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Contact du parent :</td>
+                                                <td class="font-medium text-dark-medium">{{ eleve.contact_parent }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                <footer class="footer-wrap-layout1">
+                    <div class="copyright">© Copyrights <a href="#">akkhor</a> 2019. All rights reserved. Designed by <a href="#">PsdBosS</a></div>
+                </footer>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}
+</body>
+
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static%}
+<link rel="stylesheet" href="{%static 'css/renitialisation.css' %}">
+</head>
+<body>
+
+<section class="debut">
+    <img src="{% static 'image/GESMS_logo.png' %}" alt=" " width="380px" height="420px">
+    <div class="container">
+        <div class="form">
+              <h2> Réinitialisation </h2>  
+              <div class="inputBox">
+                <input type="email" placeholder="example@gesms.com">
+              </div>
+              <div class="inputBox">
+                <br>
+                <br>
+                <button type="submit" class="connecter"> Réinitialiser </button>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

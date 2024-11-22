@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Updock&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Updock&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+} 
+
+
+.debut {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+
+.container {
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background: #F3F4F6;
+    border-radius:8px ;
+    overflow: hidden; 
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent,
+    #FFDC5C,#FFDC5C);
+    transform-origin: bottom right;
+    animation: animate 7s linear infinite;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent,
+    #004AAD,#004AAD);
+    transform-origin: bottom right;
+    animation: animate 7s linear infinite;
+    animation-delay: 3s;
+}
+
+@keyframes animate {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.form {
+    position: absolute;
+    inset: 3px;
+    border-radius: 8px;
+    background: #F3F4F6;
+    z-index: 10;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form h2 {
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #004AAD;
+}
+
+.inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.inputBox input{
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border-color: #FFDC5C;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1em;
+    outline: none;
+    color: #000000;
+} 
+.inputBox button{
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border-color: #FFDC5C;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1em;
+    outline: none;
+    color: #000000;
+    border: 1px solid #F3F4F6;
+    color:#F3F4F6;
+    background: #004AAD;
+    border-radius: 10px;
+} 
+
+.inputBox button :hover{
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1em;
+    outline: none;
+    color: #FFFFFF;
+    border-radius: 10px;
+} 
+/* button[type="submit"] {
+        border: 1px solid #F3F4F6;
+        background: #FD7E14;
+        color:#F3F4F6 ;
+        cursor: pointer;
+        margin-top: 20px;
+
+} */
+/* Style général du bouton de soumission */
+.connecter {
+    border: none;              /* Pas de bordure */
+   
+    padding: 15px 32px;        /* Espacement intérieur */
+    text-align: center;        /* Alignement du texte */
+    text-decoration: none;     /* Pas de décoration de texte */
+    display: inline-block;     /* Affichage en ligne avec possibilité de définir la largeur */
+    margin: 4px 2px;           /* Marges autour du bouton */
+    cursor: pointer;           /* Curseur de la souris sur le bouton */
+    border-radius: 4px;        /* Coins arrondis */
+    transition: background-color 0.3s; /* Effet de transition */
+}
+.next {
+    color: white;              /* Couleur du texte */
+    text-decoration: none;     /* Pas de décoration de texte */
+}
+
+/* Effet au survol */
+.connecter:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+}
+
+.oublie {
+    text-decoration: none;
+    margin-left: 150px;
+    color: #004AAD;
+}
+
+.oublie:hover {
+    text-decoration: none;
+    margin-left: 150px;
+    color:  #45a049;
+}
+
+

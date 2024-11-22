@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> GESMS PAGE DE CONNEXION</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    
+    <section class="debut">
+        <img src="{% static 'image/GESMS_logo.png' %}" alt="Logo GESMS" width="380px" height="420px">
+        <div class="container">
+            <div class="form">
+                  <h2> Connexion </h2>  
+                  <form method="POST" action="{% url 'connexion' %}">
+                    {% csrf_token %}
+                    <div class="inputBox">
+                        <input type="text" name="username" placeholder="ejemplo@gesms.com">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" placeholder="Mot de passe">
+                    </div>
+
+                    <div class="inputBox">
+                        <button type="button" class="connecter" onclick="window.location.href='{% url 'index' %}'">Se connecter</button>
+                    </div>
+                    
+
+                    <br>
+                    <a href="{% url 'reinit' %}" class="oublie">Mot de passe oublié</a>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="error">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                  </form>
+            </div>
+        </div>
+    </section>
+    <div></div>
+</body>
+</html>

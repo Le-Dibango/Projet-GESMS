@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+            <!-- Sidebar Area End Here -->
+            <div class="dashboard-content-one">
+                <!-- Breadcubs Area Start Here -->
+                <div class="breadcrumbs-area">
+                    <h3>Enseignants</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">Enseignants</a>
+                        </li>
+                        <li>Tous les enseignants</li>
+                    </ul>
+                </div>
+                <!-- Breadcubs Area End Here -->
+                <!-- Teacher Table Area Start Here -->
+                <div class="card height-auto">
+                    <div class="card-body">
+                        <div class="heading-layout1">
+                            <div class="item-title">
+                                <h3>Tous les Enseignants</h3>
+                            </div>
+                           <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" 
+                                data-toggle="dropdown" aria-expanded="false">...</a>
+        
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>PDF</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>CSV</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Copier</a>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="mg-b-20">
+                            <div class="row gutters-8">
+                                <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                                    <input type="text" placeholder="Recherche par Matricule ..." class="form-control">
+                                </div>
+                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                    <input type="text" placeholder="Recherche par Nom ..." class="form-control">
+                                </div>
+                                <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                                    <input type="text" placeholder="Recherche par contact ..." class="form-control">
+                                </div>
+                                <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                                    <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table display data-table text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th> 
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input checkAll">
+                                                <label class="form-check-label">ID</label>
+                                            </div>
+                                        </th>
+                                        <th>Photo</th>
+                                        <th>Nom </th>
+                                        <th>prenom(s) </th>
+                                        <th>Date de naissance </th>
+                                        <th>Lieu de residence</th>
+                                        <th>Nationalité </th>
+                                        <th>Matricule</th>
+                                        <th>Spécialité</th>
+                                        <th>Sexe</th>
+                                        <th>Contatct</th>
+                                        <th>Etablissement</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    {% for professeur in professeurs %}
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input">
+                                                <label class="form-check-label">{{ professeur.id }}</label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            {% if professeur.photo %}
+                                                <img src="{{ professeur.photo.url }}" alt="Photo de {{ professeur.nom }}" style="width: 35px; height:35px; object-fit: cover; border-radius: 50%;">
+                                            {% else %}
+                                                <img src="{% static 'style/img/figure/student2.png' %}" alt="Default Photo" style="width: 35px; height: 35px; object-fit: cover; border-radius: 50%;">
+                                            {% endif %}
+                                        </td>
+                            
+                                        <td>{{ professeur.nom }}</td>
+                                        <td>{{ professeur.prenom }}</td>
+                                        <td>{{ professeur.date_de_naissance }}</td>
+                                        <td>{{ professeur.lieu_de_residence }}</td>
+                                        <td>{{ professeur.nationalite }}</td>
+                                        <td>{{ professeur.matricule }}</td>
+                                        <td>{{ professeur.specialite }}</td>
+                                        <td>{{ professeur.genre }}</td>
+                                        <td>{{ professeur.contact }}</td>
+                                        <td>{{ professeur.etablissement }}</td>
+                                         <td>
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="flaticon-more-button-of-three-dots"></span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <!-- <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                                    <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+ -->
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr> 
+                                    {% endfor %}    
+                                    </tbody>      
+                            </table>
+                        </div>
+                
+                <!-- Teacher Table Area End Here -->
+                <footer class="footer-wrap-layout1">
+                    <div class="copyright">© Copyrights <a href="#">akkhor</a> 2019. All rights reserved. Designed by <a href="#">PsdBosS</a></div>
+                </footer>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+
+
+
+

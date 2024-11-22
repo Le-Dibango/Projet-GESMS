@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESMS PAGE D'ACCUEIL </title>
+
+    {% load static %}
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="hero">
+        <nav>
+            <img src=" {% static 'image/GESMS_logo.png' %}" class="logo">
+            <ul>
+              
+
+                <li><a href="#">Accueil</a></li>
+                <li><a href="{% url 'connexion' %}">Connexion</a></li>
+                <li><a href="{% url 'Apropos' %}">A propos</a></li>
+                <li><a href="#">Contacts</a></li>
+
+
+            </ul>
+            <div class="animation start-home"></div>
+        </nav>
+        <div class="content">
+            <h1>GESMS</h1>
+            <h2>Education</h2>
+            
+            <a href="{% url 'connexion' %}">Connexion</a>
+            <a href="{% url 'Apropos' %}">A propos</a>
+
+        </div>
+    </div>
+
+    
+</html>

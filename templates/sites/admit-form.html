@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block content %}
+
+            <!-- Sidebar Area End Here -->
+            <div class="dashboard-content-one">
+                <!-- Breadcubs Area Start Here -->
+                <div class="breadcrumbs-area">
+                    <h3>Elève</h3>
+                    <ul>
+                        <li>
+                            <a href="index.html">Admission</a>
+                        </li>
+                        <li>Ajouter un éleve</li>
+                    </ul>
+                </div>
+                <!-- Breadcubs Area End Here -->
+                <!-- Admit Form Area Start Here -->
+                <div class="card height-auto">
+                    <div class="card-body">
+                        <div class="heading-layout1">
+                            <div class="item-title">
+                                <h3>Ajout d'un éleve</h3>
+                            </div>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                    aria-expanded="false">...</a>
+
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-times text-orange-red"></i>Close</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form method="post" class="new-added-form" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Nom </label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.nom }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Prénom(s)</label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.prenom }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Date de naissance</label>
+                                    <!-- <input type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker"
+                                        data-position='bottom right'>
+                                    <i class="far fa-calendar-alt"></i> -->
+                                    {{ form.date_de_naissance }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>lieu de naissance </label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.lieu_de_naissance }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Nationalité</label>
+                                    <!-- <select class="select2">
+                                        <option value="">Choisir un pays</option>
+                                        <option value="1">Ci</option>
+                                        <option value="2">BF</option>
+                                        <option value="3">TOGO</option>
+                                    </select> -->
+                                    {{ form.nationalite }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Genre</label>
+                                    <!-- <select class="select2">
+                                        <option value="">Choisir le sexe</option>
+                                        <option value="1">Masculin </option>
+                                        <option value="2">Feminin</option>
+                                    </select> -->
+                                    {{ form.genre }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Matricule</label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.matricule }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label> Niveau </label>
+                                    <!-- <select class="select2">
+                                        <option value="">Choisir un niveau</option>
+                                        <option value="1">6ème</option>
+                                        <option value="2">5ème</option>
+                                        <option value="3">4ème</option>
+                                        <option value="3">3ème</option>
+                                        <option value="3">2nd</option>
+                                        <option value="3">1ère</option>
+                                    </select> -->
+                                    {{ form.niveau }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label> Classe </label>
+                                    <!-- <select class="select2">
+                                        <option value="">Choisir une classe</option>
+                                        <option value="1">A+</option>
+                                        <option value="2">A-</option>
+                                        <option value="3">B+</option>
+                                        <option value="3">B-</option>
+                                        <option value="3">O+</option>
+                                        <option value="3">O-</option>
+                                    </select> -->
+                                    {{ form.classe }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Contact </label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.contact }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Nom & Prénom(s) d'un parent</label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.nom_parent }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Profession</label>
+                                    <!-- <input type="text" placeholder="" class="form-control"> -->
+                                    {{ form.profession_parent }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label> Lien de parenté </label>
+                                    <!-- <select class="select2">
+                                        <option value="">Sélectionner une option</option>
+                                        <option value="1">Père</option>
+                                        <option value="2">Mère</option>
+                                        <option value="2">Tuteur/Autres</option>
+                                    </select> -->
+                                    {{ form.lien_parente }}
+                                </div>
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Contact du parent</label>
+                                    {{ form.contact_parent }}
+                                </div>
+                                <div class="col-lg-6 col-12 form-group mg-t-30">
+                                    <label class="text-dark-medium">Photo de l'élève (150px X 150px)</label>
+                                    <input type="file" class="form-control-file">
+                                </div>
+                                <div class="col-lg-6 col-12 form-group mg-t-30">
+                                    <label class="text-dark-medium">Photo du parent (150px X 150px)</label>
+                                    <input type="file" class="form-control-file">
+                                </div>
+                                <div class="col-12 form-group mg-t-8">
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Enregistrer </button>
+                                    <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Rénitialiser</button>
+                                </div>
+                        
+                            </div>
+                        </form>
+
+
+
+
+
+                    </div>
+                </div>
+                <!-- Admit Form Area End Here -->
+                <footer class="footer-wrap-layout1">
+                    <div class="copyright">© Copyrights <a href="#">akkhor</a> 2019. All rights reserved. Designed by <a
+                            href="#">PsdBosS</a></div>
+                </footer>
+            </div>
+        </div>
+        <!-- Page Area End Here -->
+    </div>
+
+  {% endblock %}
