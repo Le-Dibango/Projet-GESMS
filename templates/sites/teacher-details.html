@@ -7,12 +7,12 @@
             <div class="dashboard-content-one">
                 <!-- Breadcubs Area Start Here -->
                 <div class="breadcrumbs-area">
-                    <h3>Teacher</h3>
+                    <h3>Professeur</h3>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="index.html">Validation</a>
                         </li>
-                        <li>Teacher Details</li>
+                        <li>Validation de l'admission</li>
                     </ul>
                 </div>
                 <!-- Breadcubs Area End Here -->
@@ -21,26 +21,31 @@
                     <div class="card-body">
                         <div class="heading-layout1">
                             <div class="item-title">
-                                <h3>About Me</h3>
+                                <h3>Mes informations</h3>
                             </div>
                            <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" 
                                 data-toggle="dropdown" aria-expanded="false">...</a>
         
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Actualiser</a>
                                 </div>
                             </div>
                         </div>
                         <div class="single-info-details">
                             <div class="item-img">
-                                <img src="img/figure/teacher.jpg" alt="teacher">
+                        {% if eleve.photo %}
+                            <img src="{{ professeur.photo.url }}" alt="Photo du prof" width="150" height="150">
+                        {% else %}
+                            <p>Pas de photo disponible</p>
+                        {% endif %}
+
                             </div>
+
+                            
                             <div class="item-content">
                                 <div class="header-inline item-header">
-                                    <h3 class="text-dark-medium font-medium">Steven Johnson</h3>
+                                    <h3 class="text-dark-medium font-medium">{{ professeur.nom }} {{ professeur.prenom }}</h3>
                                     <div class="header-elements">
                                         <ul>
                                             <li><a href="#"><i class="far fa-edit"></i></a></li>
@@ -56,56 +61,46 @@
                                     <table class="table text-nowrap">
                                         <tbody>
                                             <tr>
-                                                <td>Name:</td>
-                                                <td class="font-medium text-dark-medium">Steven Johnson</td>
+                                                <td>Nom:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.nom }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Gender:</td>
-                                                <td class="font-medium text-dark-medium">Male</td>
+                                                <td>Prenom:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.prenom }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Father Name:</td>
-                                                <td class="font-medium text-dark-medium">Steve Jones</td>
+                                                <td>Date de naissance:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.date_de_naissance }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Mother Name:</td>
-                                                <td class="font-medium text-dark-medium">Naomi Rose</td>
+                                                <td>Lieu de résidence :</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.lieu_de_residence }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Religion:</td>
-                                                <td class="font-medium text-dark-medium">Islam</td>
+                                                <td>Matricule:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.matricule }}</td>
                                             </tr>
                                             <tr>
-                                                <td>Joining Date:</td>
-                                                <td class="font-medium text-dark-medium">07.08.2016</td>
+                                                <td>Spécialité:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.specialite }}</td>
                                             </tr>
+                                            <tr>
+                                                <td>Genre:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.genre }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Contact:</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.contact }}</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>Etablissement</td>
+                                                <td class="font-medium text-dark-medium">{{ professeur.etablissemnt }}</td>
+                                            </tr>
+                                        
                                             <tr>
                                                 <td>E-mail:</td>
                                                 <td class="font-medium text-dark-medium">stevenjohnson@gmail.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Subject:</td>
-                                                <td class="font-medium text-dark-medium">English</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Class:</td>
-                                                <td class="font-medium text-dark-medium">2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Section:</td>
-                                                <td class="font-medium text-dark-medium">Pink</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ID No:</td>
-                                                <td class="font-medium text-dark-medium">10005</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Address:</td>
-                                                <td class="font-medium text-dark-medium">House #10, Road #6, Australia</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Phone:</td>
-                                                <td class="font-medium text-dark-medium">+ 88 98568888418</td>
                                             </tr>
                                         </tbody>
                                     </table>

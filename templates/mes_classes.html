@@ -63,13 +63,9 @@
                                         
                                         <th>Nom</th>
                                         <th>Niveau</th>
-                                        <th>Prof principal</th>
+                                        <th>Délégué</th>
                                         <th>Année Scolaire</th>
-                                        <th>Etablissement</th>
-                                        <!-- <th>Time</th>
-                                        <th>Phone</th>
-                                        <th>E-mail</th> -->
-                                        <th></th>
+                                        <th>Effectif</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -83,21 +79,11 @@
                                         </td>
                                         <td><label href="#" class="form-check-label"> {{ classe.Nom}} </label></td>
                                         <td>{{ classe.niveau}}</td>
-                                        <td>{{ classe.Professeur_principal}}</td>
+                                        <td>{{ classe.delegue}}</td>
                                         <td>{{ classe.Année_Scolaire}}</td>
-                                        <td>{{ classe.Etablissement}}</td>
+                                        <td>{{ classe.effectif}}</td>
                                     
                                          <td>
-                                            <div class="dropdown">
-                                                <a class="dropdown-toggle" href="#" role="button" 
-                                                data-toggle="dropdown" aria-expanded="false">.....</a>
-                        
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{% url 'liste_classe_eleves' %}"><i class="fas fa-list text-orange-peel"></i>Faire l'appel</a>
-                                                    <a class="dropdown-item" href="{% url 'liste_classe_eleves' %}"><i class="fas fa-pen text-dark-pastel-green"></i>Entrer des notes </a>
-                                                    <a class="dropdown-item" href="{% url 'liste_classe_eleves' %}"><i class="fas fa-file-pdf text-orange-red"></i>PDF</a>
-                                                </div>
-                                            </div>
                                         </td>
                                     </tr>
                                         {% endfor %}

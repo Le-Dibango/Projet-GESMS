@@ -12,7 +12,7 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(Eleve)
 class EleveAdmin(admin.ModelAdmin):
     search_fields = ["nom", "prenom", "date_de_naissance","lieu_de_naissance"]
-    list_display = ("nom", "prenom","genre","date_de_naissance","lieu_de_naissance","nationalite","matricule", "is_student", "is_staff", "is_active")
+    list_display = ("nom", "prenom","genre","date_de_naissance","lieu_de_naissance","nationalite","matricule", "niveau","classe","mail_parent","is_student", "is_staff", "is_active")
     
 @admin.register(Professeur)
 class ProfesseurAdmin(admin.ModelAdmin):

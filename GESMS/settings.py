@@ -147,6 +147,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -182,3 +184,45 @@ BOOTSTRAP4 = {
 }
 
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'  # Serveur SMTP (par ex., Gmail)
+# EMAIL_PORT = 587  # Port SMTP
+# EMAIL_USE_TLS = True  # Active TLS
+# EMAIL_HOST_USER = 'gesms.edu01@gmail.com'  # Votre adresse e-mail
+# EMAIL_HOST_PASSWORD = 'nqwi lggc mvha fcua'  # Votre mot de passe
+
+# Paramètres pour l'envoi d'email
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Utilisation d'un serveur SMTP pour envoyer les e-mails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Serveur SMTP de Gmail (ou d'un autre fournisseur)
+EMAIL_PORT = 587  # Port pour TLS (Secure connection)
+EMAIL_USE_TLS = True  # Utilisation de TLS pour sécuriser la connexion
+EMAIL_HOST_USER = 'gesms.edu01@gmail.com'  # Ton adresse e-mail
+EMAIL_HOST_PASSWORD = 'nqwi lggc mvha fcua'  # Ton mot de passe d'email (à remplacer par ton mot de passe réel)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Adresse par défaut pour l'envoi des e-mails
+
+
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'errors.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}

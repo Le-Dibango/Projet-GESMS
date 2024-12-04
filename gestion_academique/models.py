@@ -206,11 +206,6 @@ MATIERE_CHOICES = (
 )  
 
 
-   
-
-
-
-
 # Modèle pour les Classes
 class Classe(models.Model):
     Etablissement = models.ForeignKey(Etablissement, on_delete=models.CASCADE, related_name='classes')
@@ -218,9 +213,15 @@ class Classe(models.Model):
     Nom = models.CharField(max_length=50)
     Professeur_principal = models.ForeignKey('authentication.Professeur', on_delete=models.CASCADE,null=True,blank=True)
     Spécialité_du_prof = models.CharField(max_length=20, choices=MATIERE_CHOICES, blank=True, null=True)
+    delegue = models.ForeignKey('authentication.Eleve', on_delete=models.SET_NULL, null=True, blank=True, related_name='classe_delegue')
     Année_Scolaire = models.ForeignKey(AnneeScolaire, on_delete=models.CASCADE,)
     description = models.TextField(blank=True, null=True)
-   
+    effectif = models.IntegerField(default=0)
+
+    def update_effectif(self):
+        # Met à jour l'effectif en fonction du nombre d'élèves associés à la classe
+        self.effectif = self.eleve_set.count()
+        self.save()
     def __str__(self):
         return f" {self.Nom}"
 
@@ -322,3 +323,25 @@ class Resultat(models.Model):
     def __str__(self):
         return f" {self.niveau} {self.trimestre} - {self.classe} {self.moyenne_generale}"
     
+
+# Modèle de Présence 
+
+class EtatPresence (models.Model) :
+    cours = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name='EtatPresence')
+    date = models.DateField()
+    heure_debut = models.TimeField()
+    heure_fin = models.TimeField()
+    Professeur = models.ForeignKey('authentication.Professeur', on_delete=models.CASCADE)
+    eleve = models.ForeignKey('authentication.Eleve', on_delete=models.CASCADE)
+    etat_presense = models.CharField(max_length=100, choices=[
+        ('present', 'Présent'),
+        ('absent', 'Absent'),
+        ('en_retard', 'En retard'),
+    ], default='absent')
+
+    def __str__(self):
+        return f'{self.eleve.nom} {self.eleve.prenom} - {self.etat_presense} {self.cours} {self.get_etat_presense_display()}'
+
+
+   
+

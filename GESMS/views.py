@@ -47,6 +47,12 @@ def Liste_eleves(request) :
     return render (request, 'mes_eleves.html', context={'eleves':eleve}) # vues pour tous les étudiants
 
 
+def Listes_eleves(request) :
+    eleve = Eleve.objects.all()
+    print(eleve)
+    return render (request, 'liste_etudiant.html', context={'eleves':eleve}) # vues pour tous les étudiants
+
+
 def toute_classe (request) :
     classe = Classe.objects.all()
     print(classe)
@@ -55,7 +61,7 @@ def toute_classe (request) :
 def toutes_classes (request) :
     classe = Classe.objects.all()
     print(classe)
-    return render (request, 'mes_classes.html', context={'classes':classe}) # Toutes les classes des rofs
+    return render (request, 'mes_classes.html', context={'classes':classe,}) # Toutes les classes des profs
 
 def Liste_prof (request) :
     professeur = Professeur.objects.all()
@@ -71,7 +77,7 @@ def Liste_parent (request) :
 def liste_classe_eleves(request, classe_id):
     classe = get_object_or_404(Classe, id=classe_id)
     eleves = Eleve.objects.filter(classe=classe)
-    return render(request, 'Liste_classe_eleve.html', {'classe': classe, 'eleves': eleves})
+    return render(request, 'Liste-.html', {'classe': classe, 'eleves': eleves})
 
 
 
@@ -88,16 +94,27 @@ def eleve_add (request) :
 def reçu (request) :
     return render (request, 'sites/student-details.html') # reçu d'inscription
 
-def detail_prof (request) :
-    return render (request,'sites/teacher-details.html')
+# def detail_prof (request) :
+#     return render (request,'sites/teacher-details.html')
+
+
+# def detail_prof(request, professeur_id):
+    # Récupérer le professeur par son ID
+    professeur = Professeur.objects.get(id=professeur_id)
+    return render(request, 'sites/teacher-details.html', {'professeur': professeur})
+
+def detail_prof(request, professeur_id):
+    professeur = get_object_or_404(Professeur, id=professeur_id)  # Récupère le professeur ou renvoie une erreur 404
+    return render(request, 'prof_add/sites/teacher-details.html/professeur_id', {'professeur': professeur})
 
 
 
 
 def eleve_add(request):
     if request.method == 'POST':
-        form = EleveForm(request.POST)
+        form = EleveForm(request.POST, request.FILES)
         if form.is_valid():
+            
             # Récupérer les données validées
             nom = form.cleaned_data['nom']
             prenom = form.cleaned_data['prenom']
@@ -115,7 +132,7 @@ def eleve_add(request):
             contact_parent = form.cleaned_data['contact_parent']
             photo = form.cleaned_data['photo']
             # Vous pouvez également sauvegarder l'image et d'autres informations si nécessaire
-            
+
             # Créer un nouvel objet Eleve ou un autre modèle
             eleve = Eleve(nom=nom, prenom=prenom,date_de_naissance=date_de_naissance,lieu_de_naissance=lieu_de_naissance,nationalite=nationalite,
                          genre=genre,matricule=matricule,niveau=niveau,classe=classe,contact=contact,nom_parent=nom_parent,
@@ -168,7 +185,15 @@ def prof_add(request):
 
 def eleve_detail(request, pk):
     eleve = get_object_or_404(Eleve, pk=pk)  
-    return render(request, 'student-details.html', {'eleves': eleve})
+    # return render(request, 'sites/student-details.html', {'eleve': eleve})
+    return render(request, 'student-details.html', {'eleve': eleve})
+
+    
+
+
+
+
+
 
 
 
@@ -219,6 +244,12 @@ def connexion(request):
         form = AuthenticationForm()
     messages.error(request, "Nom d'utilisateur ou mot de passe incorrect")
     return render(request, 'connexion.html', {'form': form})
+
+
+
+
+
+
 
 
 

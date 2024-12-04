@@ -79,3 +79,10 @@ class ResultatAdmin(admin.ModelAdmin):
     search_fields = ['eleve']
     list_display = ('moyenne_generale','eleve','date','trimestre','niveau')
     search_fields = ('eleve',)
+
+
+@admin.register(EtatPresence)
+class EtatPresenceAdmin(admin.ModelAdmin):
+    search_fields = ['cours','eleve']
+    list_display = ('cours','date','eleve','heure_debut','heure_fin','Professeur','etat_presense',)
+    search_fields = ('eleve',)

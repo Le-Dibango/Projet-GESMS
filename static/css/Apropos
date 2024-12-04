@@ -1,0 +1,48 @@
+/* Background style */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: linear-gradient(to bottom right, #4a90e2, #9013fe), url('https://via.placeholder.com/1920x1080');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Paragraph styling */
+p {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect */
+p:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    color: #d1e8ff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Add some spacing */
+body {
+    padding: 40px;
+}

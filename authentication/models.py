@@ -7,15 +7,57 @@ from gestion_academique.models import MATIERE_CHOICES
 from gestion_academique.models import Etablissement
 
 
+# class MyUserManager(BaseUserManager):
+
+#     def _create_user(self, email, password, **extra_fields):
+#         """
+#         Creates and saves a User with the given email and password.
+#         """
+#         if not email:
+#             raise ValueError('The Email must be set')
+#         email = self.normalize_email(email)
+#         user = self.model(email=email, **extra_fields)
+#         user.set_password(password)
+#         user.save()
+#         return user
+
+#     def create_superuser(self, email, password, **extra_fields):
+#         extra_fields.setdefault('is_staff', True)
+#         extra_fields.setdefault('is_superuser', True)
+#         extra_fields.setdefault('is_active', True)
+
+#         if extra_fields.get('is_staff') is not True:
+#             raise ValueError('Superuser must have is_staff=True.')
+#         if extra_fields.get('is_superuser') is not True:
+#             raise ValueError('Superuser must have is_superuser=True.')
+#         return self._create_user(email, password, **extra_fields)
+
+
 class MyUserManager(BaseUserManager):
 
     def _create_user(self, email, password, **extra_fields):
         """
         Creates and saves a User with the given email and password.
         """
-        if not email:
-            raise ValueError('The Email must be set')
-        email = self.normalize_email(email)
+        if not extra_fields.get('nom') or not extra_fields.get('prenom'):
+            raise ValueError('Les champs nom et prénom doivent être fournis.')
+
+        # Génération de l'email personnalisé
+        nom = extra_fields['nom'].strip().lower().replace(' ', '')
+        prenom = extra_fields['prenom'].strip().lower().replace(' ', '')
+        base_email = f"{nom}-{prenom}@gesms.com"
+
+        # Vérification de l'unicité et ajout d'un compteur si nécessaire
+        email_personnalise = base_email
+        compteur = 1
+        while self.model.objects.filter(email=email_personnalise).exists():
+            email_personnalise = f"{nom}-{prenom}{compteur}@gesms.com"
+            compteur += 1
+
+        extra_fields['email'] = email_personnalise  # Remplacement par l'email unique
+
+        # Création de l'utilisateur
+        email = self.normalize_email(email_personnalise)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save()
@@ -31,6 +73,7 @@ class MyUserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
         return self._create_user(email, password, **extra_fields)
+
 
 
 
@@ -55,6 +98,35 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['nom', 'prenom']
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     MATIERE_CHOICES = (
         ('Maths', 'Mathématiques'),
         ('SVT', 'Sciences de la Vie et de la Terre'),
@@ -162,15 +234,26 @@ class Eleve(User):
     contact = models.CharField(max_length=20, null=True, blank=True)
     nom_parent = models.CharField(max_length=255, null=True, blank=True)
     profession_parent = models.CharField(max_length=100, null=True, blank=True)
+    mail_parent = models.EmailField (max_length=100, null=True, blank=True)
     lien_parente = models.CharField(max_length=50, choices=[('Père', 'Père'), ('Mère', 'Mère'), ('Tuteur', 'Tuteur')], null=True, blank=True)
     contact_parent = models.CharField(max_length=20, null=True, blank=True)
     photo = models.ImageField(upload_to='photos_eleves/', null=True, blank=True)
     photo_parent = models.ImageField(upload_to='photos_eleves/', null=True, blank=True)
 
+    def save(self, *args, **kwargs):
+        # Mettre à jour l'effectif après avoir ajouté un élève
+        super().save(*args, **kwargs)
+        self.classe.update_effectif()
+
+    def delete(self, *args, **kwargs):
+        # Mettre à jour l'effectif après avoir supprimé un élève
+        classe = self.classe
+        super().delete(*args, **kwargs)
+        classe.update_effectif()
+
     class Meta:
         verbose_name = "Élève"
         verbose_name_plural = "Élèves"
-    
     def save(self, *args, **kwargs):
         self.is_student = True  
         super().save(*args, **kwargs)
